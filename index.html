@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tampisaw by GS Ventures | Island hopping, floating cottages and seafood boodle</title>
+<meta name="description" content="Plan your island day: island hopping, floating cottages, seafood boodle and overnight stays. Get a price estimate and send your inquiry in a minute.">
+<meta name="theme-color" content="#07323C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="promo" id="promo" hidden><span id="promoText"></span><a href="#plan">Plan your trip</a></div>
+<header class="top" id="top">
+  <div class="wrap top__in">
+    <a class="brand" href="#top"><img class="brand__mark" data-logo="gold" alt="" width="27" height="34"><span id="brand">Tampisaw</span><small id="brandBy"></small></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#packages">Packages</a>
+      <a href="#extras">Activities and food</a>
+      <a href="#stay">Stay</a>
+      <a href="#faq">Questions</a>
+    </nav>
+    <a class="btn btn--buoy btn--sm" href="#plan">Plan your trip</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__bg" id="heroBg"></div>
+    <div class="wrap hero__in">
+      <h1 class="hero__title">Spend the day on the water.</h1>
+      <p class="hero__lead" id="heroLead"></p>
+      <div class="hero__cta">
+        <a class="btn btn--buoy" href="#plan">Plan your trip</a>
+        <a class="btn btn--ghost" href="#packages">See packages</a>
+      </div>
+      <p class="hero__from" id="heroFrom"></p>
+    </div>
+    <img class="hero__emblem" data-logo="gold" alt="GS Ventures logo" width="400" height="506">
+    <div class="waves" aria-hidden="true">
+      <svg class="wave wave--back" viewBox="0 0 2880 120" preserveAspectRatio="none"><path d="M0,60 C120,20 240,20 360,60 S600,100 720,60 S960,20 1080,60 S1320,100 1440,60 V120 H0 Z"/><path transform="translate(1440)" d="M0,60 C120,20 240,20 360,60 S600,100 720,60 S960,20 1080,60 S1320,100 1440,60 V120 H0 Z"/></svg>
+      <svg class="wave wave--front" viewBox="0 0 2880 120" preserveAspectRatio="none"><path d="M0,70 C240,20 480,20 720,70 S1200,120 1440,70 V120 H0 Z"/><path transform="translate(1440)" d="M0,70 C240,20 480,20 720,70 S1200,120 1440,70 V120 H0 Z"/></svg>
+    </div>
+  </section>
+
+  <section class="perks" aria-label="Why book with us">
+    <div class="wrap perks__in" id="perks"></div>
+  </section>
+
+  <section class="sec" id="packages">
+    <div class="wrap">
+      <h2 class="h2">Pick a day that fits your group</h2>
+      <p class="sub">Prices are per person. Kids 3 to 12 pay the kid rate and under 3 is free.</p>
+      <div class="pkgs" id="pkgList"></div>
+    </div>
+  </section>
+
+  <section class="sec sec--tint" id="extras">
+    <div class="wrap">
+      <h2 class="h2">Add activities and food</h2>
+      <p class="sub">Tap Add to put it in your trip. The estimate updates as you go.</p>
+      <div class="menus">
+        <div>
+          <h3 class="h3">Activities</h3>
+          <ul class="rows" id="actList"></ul>
+        </div>
+        <div>
+          <h3 class="h3">Food</h3>
+          <ul class="rows" id="foodList"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="stay">
+    <div class="wrap stay">
+      <div>
+        <h2 class="h2">Stay the night</h2>
+        <p class="sub">Wake up to the water. Rates are per night for the whole room.</p>
+      </div>
+      <ul class="rows rows--stay" id="stayList"></ul>
+    </div>
+  </section>
+
+  <section class="sec sec--abyss" id="plan">
+    <div class="wrap">
+      <h2 class="h2 h2--light">Plan your trip</h2>
+      <p class="sub sub--light">Fill this in and send it to us. We reply with availability and how to pay.</p>
+
+      <div class="plan">
+        <form class="form" id="form" novalidate>
+          <label class="field field--wide">
+            <span>Package</span>
+            <select id="fPkg"></select>
+          </label>
+          <label class="field">
+            <span>Travel date</span>
+            <input type="date" id="fDate">
+          </label>
+          <div class="field">
+            <span>Adults</span>
+            <div class="step" data-step="adults">
+              <button type="button" aria-label="Fewer adults" data-d="-1">−</button>
+              <output id="oAdults">2</output>
+              <button type="button" aria-label="More adults" data-d="1">+</button>
+            </div>
+          </div>
+          <div class="field">
+            <span>Kids, 3 to 12</span>
+            <div class="step" data-step="kids">
+              <button type="button" aria-label="Fewer kids" data-d="-1">−</button>
+              <output id="oKids">0</output>
+              <button type="button" aria-label="More kids" data-d="1">+</button>
+            </div>
+          </div>
+          <label class="field">
+            <span>Overnight stay</span>
+            <select id="fStay"></select>
+          </label>
+          <label class="field" id="nightsWrap" hidden>
+            <span>Nights</span>
+            <input type="number" id="fNights" min="1" max="14" value="1" inputmode="numeric">
+          </label>
+          <div class="field field--wide">
+            <span>Add-ons</span>
+            <ul class="picked" id="picked"></ul>
+          </div>
+          <label class="field">
+            <span>Your name</span>
+            <input type="text" id="fName" autocomplete="name">
+          </label>
+          <label class="field">
+            <span>Mobile number</span>
+            <input type="tel" id="fPhone" autocomplete="tel" inputmode="tel">
+          </label>
+          <label class="field field--wide">
+            <span>Anything we should know?</span>
+            <textarea id="fNote" rows="2" placeholder="Birthday, dietary needs, pickup time"></textarea>
+          </label>
+        </form>
+
+        <aside class="sum" aria-live="polite">
+          <h3 class="sum__title">Your estimate</h3>
+          <dl class="sum__lines" id="sumLines"></dl>
+          <div class="sum__total"><span>Estimated total</span><strong id="sumTotal"></strong></div>
+          <p class="sum__note" id="sumNote"></p>
+          <p class="sum__err" id="sumErr" role="alert"></p>
+          <div class="send">
+            <a class="btn btn--buoy" href="#plan" data-send="messenger">Send on Messenger</a>
+            <a class="btn btn--light" href="#plan" data-send="whatsapp">Send on WhatsApp</a>
+            <a class="btn btn--light" href="#plan" data-send="sms">Send as text</a>
+            <button class="link-btn" type="button" data-send="copy">Copy message</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="how">
+    <div class="wrap">
+      <h2 class="h2">How booking works</h2>
+      <ol class="steps">
+        <li><strong>Plan and send</strong><span>Choose your package and date, then send the inquiry.</span></li>
+        <li><strong>We check availability</strong><span>We reply on the same day with a yes or the nearest open date.</span></li>
+        <li><strong>Pay the deposit</strong><span id="payText"></span></li>
+        <li><strong>Show up and enjoy</strong><span>Bring towels, sunscreen and a camera. We handle the rest.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec sec--tint" id="gallery">
+    <div class="wrap">
+      <h2 class="h2">What a day looks like</h2>
+      <div class="gal" id="gal"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="faq">
+    <div class="wrap faq">
+      <h2 class="h2">Common questions</h2>
+      <div id="faqList"></div>
+    </div>
+  </section>
+  <section class="sec sec--maker" id="maker" hidden>
+    <div class="wrap maker">
+      <img class="maker__logo" data-logo="brown" alt="GS Ventures logo" width="66" height="84">
+      <div class="maker__text">
+        <h2 class="h3" id="makerTitle"></h2>
+        <p>Questions before you book? Message us and we'll help you pick the right package for your group.</p>
+      </div>
+      <a class="btn btn--dark" href="#plan">Plan your trip</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div>
+      <img class="foot__logo" data-logo="gold" alt="" width="50" height="63">
+      <p class="foot__brand" id="fBrand"></p>
+      <p id="fLoc"></p>
+      <p id="fHours"></p>
+    </div>
+    <div>
+      <p><a id="fTel" href="#"></a></p>
+      <p><a id="fMail" href="#"></a></p>
+      <p><a id="fFb" href="#" target="_blank" rel="noopener">Facebook</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="bar" id="bar" hidden>
+  <div><span class="bar__l" id="barL"></span><strong id="barV"></strong></div>
+  <a class="btn btn--buoy btn--sm" href="#plan">Plan your trip</a>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
